@@ -5,11 +5,6 @@ import { AbstractPlugin } from "../../src/plugin-host/plugin/plugin";
 
 export class Plugin extends AbstractPlugin {
 
-  private static readonly INFO_CMD = "blackjack";
-  private static readonly BET_CMD = "bet";
-  private static readonly STAND_CMD = "stand";
-  private static readonly HIT_CMD = "hit";
-
   constructor() {
     super("Donation", "1.0.0");
   }
@@ -27,10 +22,10 @@ export class Plugin extends AbstractPlugin {
   }
 
   private verifyInputs(chat: Chat, user: User, msg: any, match: string[]): string {
-    if (msg.reply_to_message == null || msg.reply_to_message.from == null ) {
+    if (msg.reply_to_message === null || msg.reply_to_message.from === null ) {
       return "✋  I only work when you reply to a message by the user you are trying to donate to.";
     }
-    if (msg.reply_to_message.from.id == user.id) {
+    if (msg.reply_to_message.from.id === user.id) {
       return "🐔  Donating to yourself is lame.";
     }
     const split = msg.text.split(" ");
@@ -38,7 +33,7 @@ export class Plugin extends AbstractPlugin {
       return "✋  Not enough arguments! Format: /donate [amount]";
     }
     const amount = this.specifiedDonationAmount(msg);
-    if (isNaN(amount) || (amount % 1 !== 0) || amount < 0 ) {
+    if (isNaN(amount) || (amount % 1 !=== 0) || amount < 0 ) {
       return "✋  Your amount has to be a whole numeric value, you little rascal.";
     }
     if (amount > user.score) {
