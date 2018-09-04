@@ -34,7 +34,7 @@ export class Plugin extends AbstractPlugin {
       return "✋  Not enough arguments! Format: /donate [amount]";
     }
     const amount = this.specifiedDonationAmount(msg);
-    if (isNaN(amount) || (amount % 1 !=== 0) || amount < 0 ) {
+    if (isNaN(amount) || (amount % 1 !== 0) || amount < 0 ) {
       return "✋  Your amount has to be a whole numeric value, you little rascal.";
     }
     if (amount > user.score) {
