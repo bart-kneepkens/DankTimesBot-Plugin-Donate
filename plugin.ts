@@ -7,6 +7,7 @@ export class Plugin extends AbstractPlugin {
 
   constructor() {
     super("Donation", "1.0.0");
+    console.log("Donation plugin started :)");
   }
 
   /**
