@@ -23,7 +23,7 @@ export class Plugin extends AbstractPlugin {
   }
 
   private verifyInputs(chat: Chat, user: User, msg: any, match: string[]): string {
-    if (msg.reply_to_message === null || msg.reply_to_message.from === null ) {
+    if (msg.reply_to_message === null) {
       return "✋  I only work when you reply to a message by the user you are trying to donate to.";
     }
     if (msg.reply_to_message.from.id === user.id) {
@@ -34,7 +34,7 @@ export class Plugin extends AbstractPlugin {
       return "✋  Not enough arguments! Format: /donate [amount]";
     }
     const amount = this.specifiedDonationAmount(msg);
-    if (isNaN(amount) || (amount % 1 !== 0) || amount < 0 ) {
+    if (isNaN(amount) || (amount % 1 !== 0) || amount < 1 ) {
       return "✋  Your amount has to be a whole numeric value, you little rascal.";
     }
     if (amount > user.score) {
